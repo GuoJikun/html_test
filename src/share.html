@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title> Web Share Api</title>
+</head>
+
+<body>
+    <button id="share">Share</button>
+</body>
+<script>
+    const btn = document.querySelector('#share');
+    btn.addEventListener('click', () => {
+        if (navigator.share) {
+            navigator.share({
+                title: "Web Share Api 测试",
+                url: "https://www.baidu.com",
+                text: "正在查看..."
+            })
+        } else {
+            alert("不支持Web Share Api")
+        }
+    })
+</script>
+
+</html>
