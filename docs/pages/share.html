@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title> Web Share Api</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+
+<body>
+    <button id="shareText">Share text</button>
+    <button id="shareUrl">Share Url</button>
+    <button id="shareFile">Share File</button>
+    <input type="file" id="fileInput">
+</body>
+<script>
+    document.querySelector('#shareText').addEventListener('click', () => {
+        if (navigator.share) {
+            navigator.share({
+                title: "Share Text",
+                text: "正在分享的文本..."
+            })
+        } else {
+            alert("不支持Web Share Api")
+        }
+    })
+    document.querySelector('#shareUrl').addEventListener('click', () => {
+        if (navigator.share) {
+            navigator.share({
+                title: "Share Url",
+                url: "https://www.baidu.com",
+            })
+        } else {
+            alert("不支持Web Share Api")
+        }
+    })
+    let files = null;
+    document.querySelector('#fileInput').addEventListener('change', ev => {
+        files = ev.target.files
+        console.log(files)
+    })
+    document.querySelector('#shareFile').addEventListener('click', () => {
+        if (navigator.share) {
+            if (navigator.canShare({ files })) {
+                navigator.share({
+                    title: "Share File",
+                    files: files
+                })
+            } else {
+                alert("此文件不能分享")
+            }
+
+        } else {
+            alert("不支持Web Share Api")
+        }
+    })
+</script>
+
+</html>

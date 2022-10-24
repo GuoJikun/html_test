@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aspect-radio</title>
+    <link rel="stylesheet" href="/main.css">
+    <style>
+        .wrap {
+            width: 80vw;
+            aspect-ratio: 16/9;
+            background-color: brown;
+        }
+
+        .wrap-calc {
+            width: 80vw;
+            background-color: blue;
+            height: calc(80vw / 16 * 9);
+        }
+
+        .wrap-js {
+            width: 80vw;
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap"></div>
+    <div class="wrap-calc"></div>
+    <div class="wrap-js"></div>
+</body>
+<script>
+    const resize = () => {
+        const wrapJs = document.querySelector('.wrap-js');
+        const wrapJsStyle = getComputedStyle(wrapJs);
+        const wrapJsWidth = wrapJsStyle['width'];
+        const height = parseFloat(wrapJsWidth) / 16 * 9;
+        wrapJs.style.height = `${height}px`;
+    }
+    window.addEventListener('resize', () => {
+        requestAnimationFrame(resize);
+    })
+    resize()
+</script>
+
+</html>
