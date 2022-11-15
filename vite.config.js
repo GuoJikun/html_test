@@ -13,8 +13,6 @@ const getPagePathList = () => {
     return map;
 };
 
-console.log(getPagePathList());
-
 export default defineConfig({
     build: {
         outDir: "docs",
