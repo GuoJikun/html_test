@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全屏示例</title>
+    <link rel="stylesheet" href="/main.css">
+    <style>
+        body {
+            font-size: 1.4rem;
+        }
+
+        .container {
+            width: 800px;
+            margin: 0 auto;
+            line-height: 1.6em;
+            padding-top: 10vh;
+        }
+
+        .target {
+            width: 60vw;
+            height: 40vh;
+            background-color: cadetblue;
+            color: aliceblue;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn_exit {
+            display: none;
+        }
+    </style>
+  <script type="module" crossorigin src="/assets/main.ee5760a5.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <ivy-back>返回上一级</ivy-back>
+
+        <div style="margin-bottom: 12px;margin-top:24px">
+            <ivy-button class="btn1">全屏</ivy-button>
+            <ivy-button class="btn2">全屏-显示导航条</ivy-button>
+        </div>
+
+        <div class="target">
+            <span>全屏元素</span>
+            <ivy-button class="btn_exit">取消全屏</ivy-button>
+        </div>
+    </div>
+</body>
+
+<script>
+
+    const btnExitEl = document.querySelector('.btn_exit')
+    document.querySelector('.btn1').addEventListener('click', () => {
+        const targetEl = document.querySelector('.target');
+        const isFull = targetEl.fullscreenElement
+        if (!isFull) {
+            btnExitEl.setAttribute('style', 'display:inline-block')
+            targetEl.requestFullscreen()
+        }
+    })
+    document.querySelector('.btn2').addEventListener('click', () => {
+        const targetEl = document.querySelector('.target');
+        const isFull = targetEl.fullscreenElement
+        if (!isFull) {
+            btnExitEl.setAttribute('style', 'display:inline-block')
+            targetEl.requestFullscreen({
+                navigationUI: 'show'
+            })
+        }
+    })
+
+    btnExitEl.addEventListener('click', () => {
+        const targetEl = document.querySelector('.target');
+        const isFull = document.fullscreenElement;
+        if (isFull) {
+            btnExitEl.setAttribute('style', 'display:none')
+            document.exitFullscreen()
+        }
+    })
+</script>
+
+</html>

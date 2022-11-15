@@ -17,14 +17,18 @@
             margin: 0 auto;
             line-height: 1.6em;
         }
+
+        .article>li:not(:last-child) {
+            margin-bottom: 0.6em;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
         <h1>所有示例</h1>
-        <ol>
-            <li>
+        <ol class="article">
+            <li class="article-item">
                 <a href="./pages/input.html">解决中文输入过程中出发input事件的问题</a>
             </li>
             <li>
@@ -42,8 +46,12 @@
             <li>
                 <a href="./pages/grid.html">宫格布局-Grid</a>
             </li>
+            <li>
+                <a href="/pages/fullscreen.html">全屏显示</a>
+            </li>
         </ol>
     </div>
 </body>
+<script src="/src/main.js" type="module"></script>
 
 </html>

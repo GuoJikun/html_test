@@ -17,30 +17,32 @@
 
         .wrap-item {
             width: 33.33333%;
-            background-color: #ffa;
-            border: 1px solid green;
+            background-color: var(--color-primary);
             display: table-cell;
             border-collapse: collapse;
             box-sizing: border-box;
             overflow: hidden;
+            color: white;
         }
 
         .wrap-item:nth-child(even) {
-            background-color: red;
+            background-color: var(--color-success);
         }
 
         .btn {
-            margin: 18vh auto 0;
+            margin: 8vh auto 0;
             width: 60vw;
         }
     </style>
 </head>
 
 <body>
+
     <div class="btn">
-        <button class="btn1">宽高比1/1(默认)</button>
-        <button class="btn2">宽高比16/9</button>
-        <button class="btn3">宽高比4/3</button>
+        <ivy-back class="margin-bottom"></ivy-back>
+        <ivy-button class="btn1">宽高比1/1(默认)</ivy-button>
+        <ivy-button class="btn2">宽高比16/9</ivy-button>
+        <ivy-button class="btn3">宽高比4/3</ivy-button>
     </div>
 
     <div class="wrap">
@@ -53,6 +55,7 @@
         <div class="wrap-item">5打发士大夫撒打发士大夫撒旦发生的发生的富士达范德萨撒旦法撒旦发士大夫的撒发大水发生的萨芬阿斯顿 大撒反对撒阿斯顿</div>
     </div>
 </body>
+<script src="/src/main.js" type="module"></script>
 
 <script>
     let map = {
