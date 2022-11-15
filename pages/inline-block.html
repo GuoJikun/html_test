@@ -7,14 +7,14 @@
     <link rel="stylesheet" href="/main.css">
     <style>
         .wrap {
-            width: 60vw;
+            width: 80vw;
             background-color: #dcd9d0;
         }
 
         .wrap-item {
             display: inline-block;
-            width: 20vw;
-            height: 20vw;
+            width: 26vw;
+            height: 26vw;
         }
 
         /** 方案1，父元素字体大小设置为0 */
@@ -37,9 +37,9 @@
             font-size: 14px;
         }
 
-        /** 方案3，子元素转化为 table-cell */
-        .wrap-table>div {
-            display: table-cell;
+        /** 方案3，父元素转化为 table */
+        .wrap-table {
+            display: table;
         }
 
         /** 方案4，使用word-spacing */
@@ -58,7 +58,14 @@
 <body>
     <div class="page-container">
         <ivy-back class="margin-bottom"></ivy-back>
-        <div class="wrap wrap-flex">
+        <div class="margin-bottom">
+            <ivy-button class="btn1">使用 font-size 方式</ivy-button>
+            <ivy-button class="btn2">使用 flex 方式</ivy-button>
+            <ivy-button class="btn3">使用 table 方式</ivy-button>
+            <ivy-button class="btn4">使用 word-spacing 方式</ivy-button>
+            <ivy-button class="btnReset">重置</ivy-button>
+        </div>
+        <div id="wrap" class="wrap">
             <div class="wrap-item" style="background-color: #238bbc;"></div>
             <div class="wrap-item" style="background-color: #1db561;"></div>
             <div class="wrap-item" style="background-color: #785696;"></div>
@@ -66,5 +73,22 @@
     </div>
 </body>
 <script src="/src/main.js" type="module"></script>
+<script>
+    document.querySelector('.btn1').addEventListener('click', () => {
+        document.querySelector('#wrap').setAttribute('class', 'wrap wrap-font')
+    })
+    document.querySelector('.btn2').addEventListener('click', () => {
+        document.querySelector('#wrap').setAttribute('class', 'wrap wrap-flex')
+    })
+    document.querySelector('.btn3').addEventListener('click', () => {
+        document.querySelector('#wrap').setAttribute('class', 'wrap wrap-table')
+    })
+    document.querySelector('.btn4').addEventListener('click', () => {
+        document.querySelector('#wrap').setAttribute('class', 'wrap wrap-letter-spacing')
+    })
+    document.querySelector('.btnReset').addEventListener('click', () => {
+        document.querySelector('#wrap').setAttribute('class', 'wrap')
+    })
+</script>
 
 </html>
