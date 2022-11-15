@@ -4,13 +4,16 @@ import { readdirSync } from "node:fs";
 
 const getPagePathList = () => {
     const pages = readdirSync(resolve(__dirname, "pages"));
-    return pages.map((c) => {
-        const tmp = {};
+    let map = {};
+    pages.forEach((c) => {
         const t = c;
-        tmp[t.replace(".html", "")] = resolve(__dirname, "pages", c);
-        return { ...tmp };
+        map[t.replace(".html", "")] = resolve(__dirname, "pages", c);
     });
+
+    return map;
 };
+
+console.log(getPagePathList());
 
 export default defineConfig({
     build: {

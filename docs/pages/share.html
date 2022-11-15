@@ -5,14 +5,24 @@
     <meta charset="utf-8">
     <title> Web Share Api</title>
     <link rel="stylesheet" href="/main.css">
+  <script type="module" crossorigin src="/assets/main.9a997019.js"></script>
 </head>
 
 <body>
-    <button id="shareText">Share text</button>
-    <button id="shareUrl">Share Url</button>
-    <button id="shareFile">Share File</button>
-    <input type="file" id="fileInput">
+    <div class="page-container">
+        <div class="margin-bottom-large">
+            <ivy-back></ivy-back>
+        </div>
+        <div>
+            <ivy-button id="shareText">Share text</ivy-button>
+            <ivy-button id="shareUrl">Share Url</ivy-button>
+            <ivy-button id="shareFile">Share File</ivy-button>
+            <input type="file" id="fileInput">
+        </div>
+    </div>
+
 </body>
+
 <script>
     document.querySelector('#shareText').addEventListener('click', () => {
         if (navigator.share) {

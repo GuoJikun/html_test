@@ -9,29 +9,38 @@
     <link rel="stylesheet" href="/main.css">
     <style>
         .wrap {
-            width: 80vw;
+            width: 60vw;
             aspect-ratio: 16/9;
             background-color: brown;
+
         }
 
         .wrap-calc {
-            width: 80vw;
-            background-color: blue;
-            height: calc(80vw / 16 * 9);
+            width: 60vw;
+            background-color: burlywood;
+            height: calc(60vw / 16 * 9);
         }
 
         .wrap-js {
-            width: 80vw;
+            width: 60vw;
             background-color: green;
         }
     </style>
+  <script type="module" crossorigin src="/assets/main.9a997019.js"></script>
 </head>
 
 <body>
-    <div class="wrap"></div>
-    <div class="wrap-calc"></div>
-    <div class="wrap-js"></div>
+    <div class="page-container">
+        <div class="margin-bottom">
+            <ivy-back>返回上一页</ivy-back>
+        </div>
+        <div class="wrap"></div>
+        <div class="wrap-calc"></div>
+        <div class="wrap-js"></div>
+    </div>
+
 </body>
+
 <script>
     const resize = () => {
         const wrapJs = document.querySelector('.wrap-js');

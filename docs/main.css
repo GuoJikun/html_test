@@ -1,11 +1,34 @@
+:root {
+    --color-primary: #2d8cf0;
+    --color-success: #19be6b;
+    --color-warning: #ff9900;
+    --color-danger: #ed4014;
+    --color-info: #808695;
+
+    --border-color: #dcdee2;
+
+    --text-color: #515a6e;
+
+    --title-color: #17233d;
+}
 html,
 body {
     margin: 0;
     padding: 0;
+    color: var(--text-color);
 }
 
 html {
     font-size: 10px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--title-color);
 }
 
 * {
@@ -21,4 +44,17 @@ a {
 }
 a:hover {
     text-decoration: underline;
+}
+
+.page-container {
+    width: 80vw;
+    margin-left: 10vw;
+    padding-top: 8vh;
+}
+
+.margin-bottom {
+    margin-bottom: 12px;
+}
+.margin-bottom-large {
+    margin-bottom: 24px;
 }
