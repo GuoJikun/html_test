@@ -5,24 +5,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>宫格布局</title>
+    <title>类轮播图纯css实现（scroll-snap）</title>
     <link rel="stylesheet" href="/main.css">
     <style>
         .wrap {
-            width: 60vw;
-            display: flex;
-            flex-wrap: wrap;
-            margin: 24px auto;
+            width: 100%;
+            height: 100vh;
+            overflow: auto;
+            scroll-snap-type: y mandatory;
+            margin: auto;
         }
 
         .wrap-item {
-            width: 33.33333%;
+            width: 100%;
+            min-height: 100%;
             background-color: var(--color-primary);
-            display: table-cell;
-            border-collapse: collapse;
             box-sizing: border-box;
             overflow: hidden;
             color: white;
+            scroll-snap-align: start;
         }
 
         .wrap-item:nth-child(even) {
@@ -38,13 +39,7 @@
 
 <body>
 
-    <div class="btn">
-        <ivy-back class="margin-bottom"></ivy-back>
-        <ivy-button class="btn1">宽高比1/1(默认)</ivy-button>
-        <ivy-button class="btn2">宽高比16/9</ivy-button>
-        <ivy-button class="btn3">宽高比4/3</ivy-button>
-        <span>改变容器宽度高度会等比改变</span>
-    </div>
+
 
     <div class="wrap">
         <div class="wrap-item">
@@ -59,38 +54,7 @@
 <script src="/src/main.js" type="module"></script>
 
 <script>
-    let map = {
-        w: 1,
-        h: 1
-    }
-    const children = document.querySelectorAll('.wrap-item');
-    function init(w = 1, h = 1) {
-        const width = document.querySelector('.wrap').getBoundingClientRect().width;
-        const itemHeight = width / 3;
-        children.forEach(el => {
-            el.style.height = `${itemHeight / w * h}px`
-        })
-    }
-    init(map.w, map.h)
-    window.addEventListener('resize', ev => {
-        requestAnimationFrame(() => init(map.w, map.h))
-    })
 
-    document.querySelector(".btn1").addEventListener('click', () => {
-        map.w = 1
-        map.h = 1
-        init(map.w, map.h)
-    })
-    document.querySelector(".btn2").addEventListener('click', () => {
-        map.w = 16
-        map.h = 9
-        init(map.w, map.h)
-    })
-    document.querySelector(".btn3").addEventListener('click', () => {
-        map.w = 4
-        map.h = 3
-        init(map.w, map.h)
-    })
 
 </script>
 
