@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>常见的动画 vue实现</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <link rel="stylesheet" href="/main.css">
+    <style>
+        #app {
+            padding: 24px;
+            width: 80vw;
+            margin: 0 auto;
+        }
+
+        .row {
+            font-size: 14px;
+        }
+
+        .row+.row {
+            margin-top: 24px;
+        }
+
+        .row-title {
+            font-size: 15px;
+            font-weight: 600;
+            margin: 0 0 12px 0;
+        }
+
+        .row-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .item {
+            flex: 0 1 200px;
+        }
+
+        .animate-wrap {
+            width: 100%;
+            aspect-ratio: 10/3;
+            background-color: blueviolet;
+            color: white;
+            text-align: center;
+            line-height: 60px;
+            border-radius: 4px;
+            margin-top: 16px;
+        }
+
+        /* zoom-in-left */
+        .ivy-zoom-in-left-enter-active,
+        .ivy-zoom-in-left-leave-active {
+            transition: all 0.3s ease;
+        }
+
+        .ivy-zoom-in-left-enter-from,
+        .ivy-zoom-in-left-leave-to {
+            transform-origin: top left;
+            opacity: 0;
+            transform: scaleX(0.5);
+        }
+
+        .ivy-zoom-in-left-enter-to,
+        .ivy-zoom-in-left-leave-from {
+            transform-origin: top left;
+            opacity: 1;
+            transform: scaleX(1);
+        }
+
+        /* zoom-in-right */
+        .ivy-zoom-in-right-enter-active,
+        .ivy-zoom-in-right-leave-active {
+            transition: all 0.3s ease;
+        }
+
+        .ivy-zoom-in-right-enter-from,
+        .ivy-zoom-in-right-leave-to {
+            transform-origin: top right;
+            opacity: 0;
+            transform: scaleX(0.5);
+        }
+
+        .ivy-zoom-in-right-enter-to,
+        .ivy-zoom-in-right-leave-from {
+            transform-origin: top right;
+            opacity: 1;
+            transform: scaleX(1);
+        }
+
+        /* zoom-in-top */
+        .ivy-zoom-in-top-enter-active,
+        .ivy-zoom-in-top-leave-active {
+            transition: all 0.3s ease;
+        }
+
+        .ivy-zoom-in-top-enter-from,
+        .ivy-zoom-in-top-leave-to {
+            transform-origin: top left;
+            opacity: 0;
+            transform: scaleY(0.5);
+        }
+
+        .ivy-zoom-in-top-enter-to,
+        .ivy-zoom-in-top-leave-from {
+            transform-origin: top left;
+            opacity: 1;
+            transform: scaleY(1);
+        }
+
+        /* zoom-in-right */
+        .ivy-zoom-in-bottom-enter-active,
+        .ivy-zoom-in-bottom-leave-active {
+            transition: all 0.3s ease;
+        }
+
+        .ivy-zoom-in-bottom-enter-from,
+        .ivy-zoom-in-bottom-leave-to {
+            transform-origin: bottom left;
+            opacity: 0;
+            transform: scaleY(0.5);
+        }
+
+        .ivy-zoom-in-bottom-enter-to,
+        .ivy-zoom-in-bottom-leave-from {
+            transform-origin: bottom left;
+            opacity: 1;
+            transform: scaleY(1);
+        }
+
+        /* zoom-in-center-x */
+        .ivy-zoom-in-center-x-enter-active,
+        .ivy-zoom-in-center-x-leave-active {
+            transition: all 0.3s ease;
+        }
+
+        .ivy-zoom-in-center-x-enter-from,
+        .ivy-zoom-in-center-x-leave-to {
+            transform-origin: center center;
+            opacity: 0;
+            transform: scaleY(0);
+        }
+
+        .ivy-zoom-in-center-x-enter-to,
+        .ivy-zoom-in-center-x-leave-from {
+            transform-origin: center center;
+            opacity: 1;
+            transform: scaleY(1);
+        }
+
+        /* zoom-in-center-y */
+        .ivy-zoom-in-center-y-enter-active,
+        .ivy-zoom-in-center-y-leave-active {
+            transition: all 0.3s ease;
+        }
+
+        .ivy-zoom-in-center-y-enter-from,
+        .ivy-zoom-in-center-y-leave-to {
+            transform-origin: center center;
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .ivy-zoom-in-center-y-enter-to,
+        .ivy-zoom-in-center-y-leave-from {
+            transform-origin: center center;
+            opacity: 1;
+            transform: scaleX(1);
+        }
+
+        /* slide-left */
+        .ivy-slide-left-enter-active,
+        .ivy-slide-left-leave-active {
+            transition: all 0.3s ease;
+        }
+
+        .ivy-slide-left-enter-from,
+        .ivy-slide-left-leave-to {
+            transform-origin: top left;
+            opacity: 0;
+            transform: translateX(-80%);
+        }
+
+        .ivy-slide-left-enter-to,
+        .ivy-slide-left-leave-from {
+            transform-origin: top left;
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* slide-right */
+        .ivy-slide-right-enter-active,
+        .ivy-slide-right-leave-active {
+            transition: all 0.3s ease;
+        }
+
+        .ivy-slide-right-enter-from,
+        .ivy-slide-right-leave-to {
+            transform-origin: top right;
+            opacity: 0;
+            transform: translateX(80%);
+        }
+
+        .ivy-slide-right-enter-to,
+        .ivy-slide-right-leave-from {
+            transform-origin: top right;
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* slide-top */
+        .ivy-slide-top-enter-active,
+        .ivy-slide-top-leave-active {
+            transition: all 0.3s ease;
+        }
+
+        .ivy-slide-top-enter-from,
+        .ivy-slide-top-leave-to {
+            transform-origin: top left;
+            opacity: 0;
+            transform: translateY(-100%);
+        }
+
+        .ivy-slide-top-enter-to,
+        .ivy-slide-top-leave-from {
+            transform-origin: top left;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* slide-right */
+        .ivy-slide-bottom-enter-active,
+        .ivy-slide-bottom-leave-active {
+            transition: all 0.3s ease;
+        }
+
+        .ivy-slide-bottom-enter-from,
+        .ivy-slide-bottom-leave-to {
+            transform-origin: bottom left;
+            opacity: 0;
+            transform: translateY(100%);
+        }
+
+        .ivy-slide-bottom-enter-to,
+        .ivy-slide-bottom-leave-from {
+            transform-origin: bottom left;
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+  <script type="module" crossorigin src="/assets/main.9a997019.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div class="row">
+            <h2 class="row-title">Animation Zoom In</h2>
+            <div class="row-wrap">
+                <div class="item">
+                    <button @click="show1">显示动画</button>
+                    <transition name="ivy-zoom-in-left">
+                        <div class="animate-wrap" v-show="visible1">ivy-zoom-in-left</div>
+                    </transition>
+                </div>
+                <div class="item">
+                    <button @click="show2">显示动画</button>
+                    <transition name="ivy-zoom-in-right">
+                        <div class="animate-wrap" v-show="visible2">ivy-zoom-in-right</div>
+                    </transition>
+                </div>
+                <div class="item">
+                    <button @click="show3">显示动画</button>
+                    <transition name="ivy-zoom-in-top">
+                        <div class="animate-wrap" v-show="visible3">ivy-zoom-in-top</div>
+                    </transition>
+                </div>
+                <div class="item">
+                    <button @click="show4">显示动画</button>
+                    <transition name="ivy-zoom-in-bottom">
+                        <div class="animate-wrap" v-show="visible4">ivy-zoom-in-bottom</div>
+                    </transition>
+                </div>
+                <div class="item">
+                    <button @click="show5">显示动画</button>
+                    <transition name="ivy-zoom-in-center-x">
+                        <div class="animate-wrap" v-show="visible5">ivy-zoom-in-center-x</div>
+                    </transition>
+                </div>
+                <div class="item">
+                    <button @click="show6">显示动画</button>
+                    <transition name="ivy-zoom-in-center-y">
+                        <div class="animate-wrap" v-show="visible6">ivy-zoom-in-center-y</div>
+                    </transition>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="row-title">Animation Slide</h2>
+            <div class="row-wrap">
+                <div class="item">
+                    <button @click="show7">显示动画</button>
+                    <transition name="ivy-slide-left">
+                        <div class="animate-wrap" v-show="visible7">ivy-slide-left</div>
+                    </transition>
+                </div>
+                <div class="item">
+                    <button @click="show8">显示动画</button>
+                    <transition name="ivy-slide-right">
+                        <div class="animate-wrap" v-show="visible8">ivy-slide-right</div>
+                    </transition>
+                </div>
+                <div class="item">
+                    <button @click="show9">显示动画</button>
+                    <transition name="ivy-slide-top">
+                        <div class="animate-wrap" v-show="visible9">ivy-slide-top</div>
+                    </transition>
+                </div>
+                <div class="item">
+                    <button @click="show10">显示动画</button>
+                    <transition name="ivy-slide-bottom">
+                        <div class="animate-wrap" v-show="visible10">ivy-slide-bottom</div>
+                    </transition>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+<script>
+    const { createApp } = Vue
+
+    createApp({
+        data() {
+            return {
+                visible1: true,
+                visible2: true,
+                visible3: true,
+                visible4: true,
+                visible5: true,
+                visible6: true,
+                visible7: true,
+                visible8: true,
+                visible9: true,
+                visible10: true,
+                visible11: true,
+                visible12: true,
+                visible13: true,
+                visible14: true,
+            }
+        },
+        methods: {
+            show1() {
+                this.visible1 = !this.visible1
+            },
+            show2() {
+                this.visible2 = !this.visible2
+            },
+            show3() {
+                this.visible3 = !this.visible3
+            },
+            show4() {
+                this.visible4 = !this.visible4
+            },
+            show5() {
+                this.visible5 = !this.visible5
+            },
+            show6() {
+                this.visible6 = !this.visible6
+            },
+            show7() {
+                this.visible7 = !this.visible7
+            },
+            show8() {
+                this.visible8 = !this.visible8
+            },
+            show9() {
+                this.visible9 = !this.visible9
+            },
+            show10() {
+                this.visible10 = !this.visible10
+            },
+            show11() {
+                this.visible11 = !this.visible11
+            },
+            show12() {
+                this.visible12 = !this.visible12
+            },
+            show13() {
+                this.visible13 = !this.visible13
+            },
+            show14() {
+                this.visible14 = !this.visible14
+            },
+        },
+    }).mount('#app')
+</script>
+
+</html>

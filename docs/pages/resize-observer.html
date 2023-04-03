@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全屏示例</title>
+    <link rel="stylesheet" href="/main.css">
+    <style>
+        body {
+            font-size: 1.4rem;
+        }
+
+
+        .target {
+            max-width: 80vw;
+            width: 60vw;
+            height: 40vh;
+            background-color: #fafafa;
+            color: aliceblue;
+            resize: both;
+        }
+    </style>
+  <script type="module" crossorigin src="/assets/main.9a997019.js"></script>
+</head>
+
+<body>
+    <div class="page-container">
+        <ivy-back class="margin-bottom">返回上一级</ivy-back>
+
+        <div class="margin-bottom">
+            <ivy-button class="bind">绑定监听</ivy-button>
+            <ivy-button class="unbind">取消监听</ivy-button>
+        </div>
+
+        <textarea class="target" readonly>
+
+        </textarea>
+
+        <div class="state-wrap">
+            <p class="bindState">监听状态：已绑定</p>
+            <ol class="observeRecord"></ol>
+        </div>
+    </div>
+</body>
+
+<script>
+
+    const targetEl = document.querySelector('.target')
+    const stateEl = document.querySelector('.observeRecord')
+    const instance = new ResizeObserver(data => {
+        const firstData = data[0]
+        console.log(firstData, {
+            borderBoxSize: firstData.borderBoxSize[0],
+            contentBoxSize: firstData.contentBoxSize[0],
+            contentRect: firstData.contentRect[0],
+            devicePixelContentBoxSize: firstData.devicePixelContentBoxSize[0],
+        })
+        const tmp = document.createElement('li');
+        tmp.textContent = JSON.stringify({
+            borderBoxSize: [...firstData.borderBoxSize],
+            contentBoxSize: firstData.contentBoxSize[0],
+            contentRect: firstData.contentRect[0],
+            devicePixelContentBoxSize: firstData.devicePixelContentBoxSize[0],
+        })
+        stateEl.appendChild(tmp)
+    });
+
+    instance.observe(targetEl)
+
+    document.querySelector('.bind').addEventListener('click', () => {
+        instance.observe(targetEl)
+        document.querySelector('.bindState').textContent = `监听状态：已绑定`
+    })
+
+    document.querySelector('.unbind').addEventListener('click', () => {
+        instance.unobserve(targetEl)
+        document.querySelector('.bindState').textContent = `监听状态：未绑定`
+    })
+
+
+</script>
+
+</html>
