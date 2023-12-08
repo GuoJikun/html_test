@@ -17,7 +17,11 @@
             width: 900px;
             height: 100vh;
             margin: 0 auto;
-            content-visibility: auto;
+            content-visibility: visible;
+        }
+
+        .is-visible {
+            content-visibility: visible;
         }
 
         .wrap>p {
@@ -30,19 +34,20 @@
         }
 
         .wrap>p:nth-child(even) {
-            background-color: green;
+            background-color: purple;
         }
     </style>
 </head>
 
 <body>
     <div>
-
+        <ivy-back>返回上一级</ivy-back>
     </div>
     <div class="wrap">
 
     </div>
 </body>
+<script src="/src/main.js" type="module"></script>
 <script>
 
     let html = '';
