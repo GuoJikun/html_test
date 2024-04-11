@@ -1,6 +1,7 @@
-import Component from "./utils.js";
+import Ele, { Component } from "./utils.js";
 
-class Back extends Component {
+// @Component("ivy-back")
+class Back extends Ele {
     constructor() {
         super();
     }
@@ -42,7 +43,7 @@ class Back extends Component {
     }
 }
 
-class Button extends Component {
+class Button extends Ele {
     constructor() {
         super();
     }

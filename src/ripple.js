@@ -25,9 +25,6 @@ class RippleButton extends HTMLElement {
             box-sizing: border-box;
         }
 
-        
-
-
         @keyframes rippleEffect {
             form{
                 width: 0;
