@@ -250,8 +250,25 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* fade */
+        .ivy-fade-enter-active,
+        .ivy-fade-leave-active {
+            transition: all 0.3s ease;
+        }
+
+        .ivy-fade-enter-from,
+        .ivy-fade-leave-to {
+            opacity: 0;
+        }
+
+        .ivy-fade-enter-to,
+        .ivy-fade-leave-from {
+            opacity: 1;
+        }
     </style>
-  <script type="module" crossorigin src="/assets/main.9a997019.js"></script>
+  <script type="module" crossorigin src="/assets/modulepreload-polyfill.c7c6310f.js"></script>
+  <script type="module" crossorigin src="/assets/main.30cdc01e.js"></script>
 </head>
 
 <body>
@@ -322,6 +339,17 @@
                     <button @click="show10">显示动画</button>
                     <transition name="ivy-slide-bottom">
                         <div class="animate-wrap" v-show="visible10">ivy-slide-bottom</div>
+                    </transition>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="row-title">Animation Fade</h2>
+            <div class="row-wrap">
+                <div class="item">
+                    <button @click="show11">显示动画</button>
+                    <transition name="ivy-fade">
+                        <div class="animate-wrap" v-show="visible11">ivy-fade</div>
                     </transition>
                 </div>
             </div>

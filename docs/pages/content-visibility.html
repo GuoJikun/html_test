@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS content-visibility</title>
+    <link rel="stylesheet" href="/main.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrap {
+            width: 900px;
+            height: 100vh;
+            margin: 0 auto;
+            content-visibility: visible;
+        }
+
+        .is-visible {
+            content-visibility: visible;
+        }
+
+        .wrap>p {
+            background-color: gray;
+            text-align: center;
+            line-height: 1.8em;
+            padding: 12px 0;
+            margin: 0;
+            color: white;
+        }
+
+        .wrap>p:nth-child(even) {
+            background-color: purple;
+        }
+    </style>
+  <script type="module" crossorigin src="/assets/modulepreload-polyfill.c7c6310f.js"></script>
+  <script type="module" crossorigin src="/assets/main.30cdc01e.js"></script>
+</head>
+
+<body>
+    <div>
+        <ivy-back>返回上一级</ivy-back>
+    </div>
+    <div class="wrap">
+
+    </div>
+</body>
+
+<script>
+
+    let html = '';
+    for (let i = 0; i < 100000; i++) {
+        html += `<p>${i + 1}</p>`
+    }
+
+    document.querySelector('.wrap').innerHTML = html
+</script>
+
+</html>
