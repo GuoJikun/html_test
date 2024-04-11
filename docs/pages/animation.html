@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>常见的动画 vue实现</title>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
 
     <link rel="stylesheet" href="/main.css">
     <style>
@@ -268,46 +268,47 @@
         }
     </style>
   <script type="module" crossorigin src="/assets/modulepreload-polyfill.c7c6310f.js"></script>
-  <script type="module" crossorigin src="/assets/main.30cdc01e.js"></script>
+  <script type="module" crossorigin src="/assets/main.4822326e.js"></script>
 </head>
 
 <body>
     <div id="app">
+        <h1>Vue 实现的常用动画</h1>
         <div class="row">
             <h2 class="row-title">Animation Zoom In</h2>
             <div class="row-wrap">
                 <div class="item">
-                    <button @click="show1">显示动画</button>
+                    <ivy-button @click="show1" size="small">显示动画</ivy-button>
                     <transition name="ivy-zoom-in-left">
                         <div class="animate-wrap" v-show="visible1">ivy-zoom-in-left</div>
                     </transition>
                 </div>
                 <div class="item">
-                    <button @click="show2">显示动画</button>
+                    <ivy-button @click="show2" size="small">显示动画</ivy-button>
                     <transition name="ivy-zoom-in-right">
                         <div class="animate-wrap" v-show="visible2">ivy-zoom-in-right</div>
                     </transition>
                 </div>
                 <div class="item">
-                    <button @click="show3">显示动画</button>
+                    <ivy-button @click="show3" size="small">显示动画</ivy-button>
                     <transition name="ivy-zoom-in-top">
                         <div class="animate-wrap" v-show="visible3">ivy-zoom-in-top</div>
                     </transition>
                 </div>
                 <div class="item">
-                    <button @click="show4">显示动画</button>
+                    <ivy-button @click="show4" size="small">显示动画</ivy-button>
                     <transition name="ivy-zoom-in-bottom">
                         <div class="animate-wrap" v-show="visible4">ivy-zoom-in-bottom</div>
                     </transition>
                 </div>
                 <div class="item">
-                    <button @click="show5">显示动画</button>
+                    <ivy-button @click="show5" size="small">显示动画</ivy-button>
                     <transition name="ivy-zoom-in-center-x">
                         <div class="animate-wrap" v-show="visible5">ivy-zoom-in-center-x</div>
                     </transition>
                 </div>
                 <div class="item">
-                    <button @click="show6">显示动画</button>
+                    <ivy-button @click="show6" size="small">显示动画</ivy-button>
                     <transition name="ivy-zoom-in-center-y">
                         <div class="animate-wrap" v-show="visible6">ivy-zoom-in-center-y</div>
                     </transition>
@@ -318,25 +319,25 @@
             <h2 class="row-title">Animation Slide</h2>
             <div class="row-wrap">
                 <div class="item">
-                    <button @click="show7">显示动画</button>
+                    <ivy-button @click="show7" size="small">显示动画</ivy-button>
                     <transition name="ivy-slide-left">
                         <div class="animate-wrap" v-show="visible7">ivy-slide-left</div>
                     </transition>
                 </div>
                 <div class="item">
-                    <button @click="show8">显示动画</button>
+                    <ivy-button @click="show8" size="small">显示动画</ivy-button>
                     <transition name="ivy-slide-right">
                         <div class="animate-wrap" v-show="visible8">ivy-slide-right</div>
                     </transition>
                 </div>
                 <div class="item">
-                    <button @click="show9">显示动画</button>
+                    <ivy-button @click="show9" size="small">显示动画</ivy-button>
                     <transition name="ivy-slide-top">
                         <div class="animate-wrap" v-show="visible9">ivy-slide-top</div>
                     </transition>
                 </div>
                 <div class="item">
-                    <button @click="show10">显示动画</button>
+                    <ivy-button @click="show10" size="small">显示动画</ivy-button>
                     <transition name="ivy-slide-bottom">
                         <div class="animate-wrap" v-show="visible10">ivy-slide-bottom</div>
                     </transition>
@@ -347,7 +348,7 @@
             <h2 class="row-title">Animation Fade</h2>
             <div class="row-wrap">
                 <div class="item">
-                    <button @click="show11">显示动画</button>
+                    <ivy-button @click="show11" size="small">显示动画</ivy-button>
                     <transition name="ivy-fade">
                         <div class="animate-wrap" v-show="visible11">ivy-fade</div>
                     </transition>
@@ -361,7 +362,7 @@
 <script>
     const { createApp } = Vue
 
-    createApp({
+    const app = createApp({
         data() {
             return {
                 visible1: true,
@@ -424,7 +425,9 @@
                 this.visible14 = !this.visible14
             },
         },
-    }).mount('#app')
+    })
+    app.config.compilerOptions.isCustomElement = (tag) => tag.startsWith('ivy-')
+    app.mount('#app')
 </script>
 
 </html>

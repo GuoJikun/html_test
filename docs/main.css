@@ -1,9 +1,14 @@
 :root {
     --color-primary: #2d8cf0;
+    --color-primary-light: #79bbff;
     --color-success: #19be6b;
+    --color-success-light: #95d475;
     --color-warning: #ff9900;
+    --color-warning-light: #eebe77;
     --color-danger: #ed4014;
+    --color-danger-light: #f89898;
     --color-info: #808695;
+    --color-info-light: #b1b3b8;
 
     --border-color: #dcdee2;
 
@@ -38,6 +43,16 @@ body {
     font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
         "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
     font-size: 1.4rem;
+}
+@media screen and (max-width: 1366px) {
+    body {
+        font-size: 1.2rem;
+    }
+}
+@media screen and (min-width: 1921px) {
+    body {
+        font-size: 1.6rem;
+    }
 }
 a {
     text-decoration: none;

@@ -1,4 +1,4 @@
-var s=Object.defineProperty;var i=(o,t,e)=>t in o?s(o,t,{enumerable:!0,configurable:!0,writable:!0,value:e}):o[t]=e;var r=(o,t,e)=>(i(o,typeof t!="symbol"?t+"":t,e),e);class n extends HTMLElement{constructor(){super();r(this,"shadowRef");this.__init(),this.beforeMount()}__init(){const e=document.createElement("template");e.innerHTML=`<style>${this.style()}</style>${this.render()}`,this.shadowRef=this.attachShadow({mode:"open"}),this.shadowRef.appendChild(e.content.cloneNode(!0))}beforeMount(){}style(){return":host{display:block;}"}render(){return"<slot></slot>"}}class l extends n{constructor(){super()}style(){return`
+var i=Object.defineProperty;var s=(o,t,r)=>t in o?i(o,t,{enumerable:!0,configurable:!0,writable:!0,value:r}):o[t]=r;var e=(o,t,r)=>(s(o,typeof t!="symbol"?t+"":t,r),r);class n extends HTMLElement{constructor(){super();e(this,"shadowRef");this.__init(),this.beforeMount()}__init(){const r=document.createElement("template");r.innerHTML=`<style>${this.style()}</style>${this.render()}`,this.shadowRef=this.attachShadow({mode:"open"}),this.shadowRef.appendChild(r.content.cloneNode(!0))}beforeMount(){}style(){return":host{display:block;}"}render(){return"<slot></slot>"}}class l extends n{constructor(){super()}style(){return`
         :host{
             display: block;
         }
@@ -38,7 +38,19 @@ var s=Object.defineProperty;var i=(o,t,e)=>t in o?s(o,t,{enumerable:!0,configura
             border-color: var(--color-primary);
             color: var(--color-primary);
         }
+        :host(:active){
+            border-color: var(--color-primary-light);
+            color: var(--color-primary-light);
+        }
         :host(:last-child) {
             margin-right: 0;
+        }
+
+        :host([size="small"]){
+            border-radius: 4px;
+            line-height: 28px;
+            height: 28px;
+            padding: 0 12px;
+            font-size: 12px;
         }
         `}render(){return"<slot></slot>"}}window.customElements.get("ivy-back")||window.customElements.define("ivy-back",l);window.customElements.get("ivy-button")||window.customElements.define("ivy-button",d);

@@ -15,13 +15,14 @@
             left: 0;
             z-index: 9999;
             display: none;
+            border-style: solid;
             border-width: 10vh 10vw 10vh 10vw;
             border-color: rgba(0, 0, 0, 0.4);
             mask-clip: border-box
         }
     </style>
   <script type="module" crossorigin src="/assets/modulepreload-polyfill.c7c6310f.js"></script>
-  <script type="module" crossorigin src="/assets/main.30cdc01e.js"></script>
+  <script type="module" crossorigin src="/assets/main.4822326e.js"></script>
 </head>
 
 <body>
@@ -39,6 +40,10 @@
 <script>
     document.querySelector('.btn1').addEventListener('click', () => {
         document.querySelector('#wrap').style.display = 'block'
+    })
+
+    document.querySelector('#wrap').addEventListener('click', () => {
+        document.querySelector('#wrap').style.display = 'none'
     })
 </script>
 

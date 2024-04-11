@@ -68,8 +68,20 @@ class Button extends Component {
             border-color: var(--color-primary);
             color: var(--color-primary);
         }
+        :host(:active){
+            border-color: var(--color-primary-light);
+            color: var(--color-primary-light);
+        }
         :host(:last-child) {
             margin-right: 0;
+        }
+
+        :host([size="small"]){
+            border-radius: 4px;
+            line-height: 28px;
+            height: 28px;
+            padding: 0 12px;
+            font-size: 12px;
         }
         `;
     }
