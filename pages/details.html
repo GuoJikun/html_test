@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用 details 实现手风琴效果</title>
+    <link rel="stylesheet" href="/main.css">
+    <script type="text/javascript">
+        (function (c, l, a, r, i, t, y) {
+            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "myx5h0kuzs");
+    </script>
+    <style>
+        .wrap {}
+
+        .wrap-item {
+            height: auto !important;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .wrap-item+.wrap-item {
+            border-top: none;
+        }
+
+        .wrap-item>summary {
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 6px 6px;
+        }
+
+        .wrap-item[open] summary {
+            border-bottom: #ccc 1px solid;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-container">
+        <h1>使用 details 实现手风琴效果</h1>
+        <div class="btn">
+            <ivy-back class="margin-bottom"></ivy-back>
+        </div>
+
+        <div class="wrap">
+            <p>主要是利用的 details 元素的新属性 <code>name</code>，只需要将 details 元素的 name 属性的值设为相同。</p>
+            <details class="wrap-item" name="test" open>
+                <summary>史蒂夫·乔布斯</summary>
+                <p style="padding: 0 12px">史蒂夫·乔布斯（Steve Jobs），1955年2月24日生于美国加利福尼亚州旧金山，美国发明家、企业家、美国苹果公司联合创办人。</p>
+            </details>
+            <details class="wrap-item" name="test">
+                <summary>斯蒂夫·盖瑞·沃兹尼亚克</summary>
+                <p style="padding: 0 12px">
+                    斯蒂夫·盖瑞·沃兹尼亚克（Stephen Gary
+                    Wozniak），美国电脑工程师，曾与史蒂夫·乔布斯合伙创立苹果电脑（今之苹果公司）。斯蒂夫·盖瑞·沃兹尼亚克曾就读于美国科罗拉多大学，后转学入美国著名高等学府加州大学伯克利分校（UC
+                    Berkeley）并获得电机工程及计算机（EECS）本科学位（1987年）。</p>
+            </details>
+            <details class="wrap-item" name="test">
+                <summary>乔纳森·伊夫</summary>
+                <p style="padding: 0 12px">
+                    乔纳森·伊夫是一位工业设计师，现任Apple公司设计师兼资深副总裁，英国爵士。他曾参与设计了iPod，iMac，iPhone，iPad等众多苹果产品。除了乔布斯，他是对苹果那些著名的产品最有影响力的人。
+                </p>
+            </details>
+            <h2>浏览器兼容性</h2>
+            <img src="/images/details/img.png" alt="浏览器兼容性">
+        </div>
+    </div>
+</body>
+<script src="/src/main.js" type="module"></script>
+
+<script>
+    let map = {
+        w: 1,
+        h: 1
+    }
+    const children = document.querySelectorAll('.wrap-item');
+    function init(w = 1, h = 1) {
+        const width = document.querySelector('.wrap').getBoundingClientRect().width;
+        const itemHeight = width / 3;
+        children.forEach(el => {
+            el.style.height = `${itemHeight / w * h}px`
+        })
+    }
+    init(map.w, map.h)
+    window.addEventListener('resize', ev => {
+        requestAnimationFrame(() => init(map.w, map.h))
+    })
+
+    document.querySelector(".btn1").addEventListener('click', () => {
+        map.w = 1
+        map.h = 1
+        init(map.w, map.h)
+    })
+    document.querySelector(".btn2").addEventListener('click', () => {
+        map.w = 16
+        map.h = 9
+        init(map.w, map.h)
+    })
+    document.querySelector(".btn3").addEventListener('click', () => {
+        map.w = 4
+        map.h = 3
+        init(map.w, map.h)
+    })
+
+</script>
+
+</html>
