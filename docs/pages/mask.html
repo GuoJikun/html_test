@@ -5,11 +5,18 @@
     <meta charset="utf-8">
     <title>CSS Mask 遮罩</title>
     <link rel="stylesheet" href="/main.css">
+    <script type="text/javascript">
+        (function (c, l, a, r, i, t, y) {
+            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "myx5h0kuzs");
+    </script>
     <style>
         .wrap {
             width: 100vw;
             height: 100vh;
-            background-color: transparent;
+            /* background-color: rgba(33, 33, 33, 0.6); */
             position: fixed;
             top: 0;
             left: 0;
@@ -18,11 +25,10 @@
             border-style: solid;
             border-width: 10vh 10vw 10vh 10vw;
             border-color: rgba(0, 0, 0, 0.4);
-            mask-clip: border-box
+            mask-clip: content-box
         }
     </style>
-  <script type="module" crossorigin src="/assets/modulepreload-polyfill.c7c6310f.js"></script>
-  <script type="module" crossorigin src="/assets/main.4822326e.js"></script>
+  <script type="module" crossorigin src="/assets/main-DL9nkER_.js"></script>
 </head>
 
 <body>
@@ -36,7 +42,6 @@
         </div>
     </div>
 </body>
-
 <script>
     document.querySelector('.btn1').addEventListener('click', () => {
         document.querySelector('#wrap').style.display = 'block'

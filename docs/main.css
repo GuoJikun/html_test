@@ -67,9 +67,38 @@ a:hover {
     padding-top: 8vh;
 }
 
+.page-container > h1 {
+    text-align: center;
+}
+
 .margin-bottom {
     margin-bottom: 12px;
 }
 .margin-bottom-large {
     margin-bottom: 24px;
+}
+
+code {
+    background-color: #f2f3f4;
+    padding: 2px 4px;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    font-family: "Courier New", Courier, monospace;
+}
+
+sup {
+    font-size: 0.8em;
+    vertical-align: super;
+    display: inline-flex;
+    align-items: center;
+    line-height: 1em;
+    font-family: "Courier New", Courier, monospace;
+}
+sup.wip {
+    background-color: #f1f2f3;
+    padding: 3px 8px;
+    margin: 0 4px;
+    border-radius: 2px;
+    color: var(--color-warning);
 }

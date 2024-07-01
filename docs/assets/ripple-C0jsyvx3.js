@@ -1,6 +1,6 @@
-import"./modulepreload-polyfill.c7c6310f.js";class l extends HTMLElement{constructor(){super();const n=this.attachShadow({mode:"open"}),t=document.createElement("template");t.innerHTML=`
+import"./main-DL9nkER_.js";class l extends HTMLElement{constructor(){super();const n=this.attachShadow({mode:"open"}),t=document.createElement("template");t.innerHTML=`
         <style>
-        /* CSS \u6837\u5F0F */
+        /* CSS 样式 */
         .ripple-button {
             position: relative;
             display: inline-block;
@@ -12,9 +12,6 @@ import"./modulepreload-polyfill.c7c6310f.js";class l extends HTMLElement{constru
             overflow: hidden;
             box-sizing: border-box;
         }
-
-        
-
 
         @keyframes rippleEffect {
             form{
